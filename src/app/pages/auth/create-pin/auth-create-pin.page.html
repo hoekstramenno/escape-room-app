@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar color="dark" mode="ios">
+        <ion-buttons slot="start">
+            <ion-back-button (customClick)="back($event)"
+                             [hidden]="step === 0 && !userService.pin"
+            ></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <span *ngIf="!userService.pin">Pin instellen</span>
+            <span *ngIf="userService.pin">Pin wijzigen</span>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content backgroundImage
+             forceOverscroll="false"
+>
+
+    <ion-slides [options]="{allowTouchMove: false}" #slides>
+        <ion-slide>
+            <auth-pin [length]="5"
+                      (submit)="onSubmit($event, 0)"
+                      [title]="userService.pin ? 'Stel een nieuwe pin in:' : 'Stel een pin in:'"
+            ></auth-pin>
+        </ion-slide>
+        <ion-slide>
+            <auth-pin [length]="5"
+                      (submit)="onSubmit($event, 1)"
+                      title="Bevestig je pin:"
+            ></auth-pin>
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>

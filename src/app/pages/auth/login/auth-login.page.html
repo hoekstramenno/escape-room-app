@@ -1,0 +1,106 @@
+<ion-header [attr.no-border]="isScrolledToTop ? true : null">
+    <ion-toolbar backgroundImage>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/onboarding"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            Inloggen
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content backgroundImage
+             fullscreen
+             scrollEvents="true"
+             (ionScroll)="onScroll($event)"
+>
+
+    <form *ngIf="form && userService.user" [formGroup]="form" (ngSubmit)="login()" action>
+
+        <ion-card color="light">
+            <ion-card-content>
+
+                <ion-label>E-mailadres</ion-label>
+                <ion-item no-inner-padding>
+                    <ion-input type="email"
+                               formControlName="email"
+                               [(ngModel)]="userService.user.email"
+                    ></ion-input>
+                    <ion-icon name="close"
+                              color="danger"
+                              slot="end"
+                              [hidden]="form.controls.email.valid || !form.controls.email.touched"
+                    ></ion-icon>
+                </ion-item>
+                <form-control-errors [control]="form.controls.email"
+                                     [errorMessages]="validationMessages.email"
+                                     margin-bottom
+                ></form-control-errors>
+
+                <ion-label>Wachtwoord</ion-label>
+                <ion-item no-inner-padding>
+                    <ion-input type="password"
+                               formControlName="password"
+                    ></ion-input>
+                    <ion-icon name="close"
+                              color="danger"
+                              slot="end"
+                              [hidden]="form.controls.password.valid || !form.controls.password.touched"
+                    ></ion-icon>
+                </ion-item>
+                <form-control-errors [control]="form.controls.password"
+                                     [errorMessages]="validationMessages.password"
+                                     margin-bottom
+                ></form-control-errors>
+
+                <ion-label>Veteranenregistratienummer</ion-label>
+                <ion-item no-inner-padding>
+                    <ion-input type="tel"
+                               formControlName="veteranNumber"
+                               minlength="9"
+                               maxlength="9"
+                               [(ngModel)]="userService.lastLoggedInVeteranNumber"
+                    ></ion-input>
+                    <ion-icon name="close"
+                              color="danger"
+                              slot="end"
+                              [hidden]="form.controls.veteranNumber.valid || !form.controls.veteranNumber.touched"
+                    ></ion-icon>
+                </ion-item>
+                <form-control-errors [control]="form.controls.veteranNumber"
+                                     [errorMessages]="validationMessages.veteranNumber"
+                ></form-control-errors>
+
+                <p *ngIf="error" class="error">{{ error }}</p>
+
+            </ion-card-content>
+        </ion-card>
+
+        <ion-button type="submit"
+                    size="large"
+                    color="primary"
+                    expand="block"
+                    margin
+                    [disabled]="submitting"
+        >
+            <span [hidden]="submitting">Inloggen</span>
+            <ion-spinner [hidden]="!submitting"></ion-spinner>
+        </ion-button>
+
+        <input type="submit" semi-hidden>
+    </form>
+
+    <ion-button expand="block"
+                fill="clear"
+                margin
+                color="info"
+                [routerLink]="'/auth/forgot-password'"
+    >
+        Wachtwoord vergeten
+    </ion-button>
+
+    <p *ngIf="testMode" text-center padding-horizontal>
+        Dit is een <strong>testversie</strong>. Log dus in met je testaccount.
+    </p>
+
+</ion-content>

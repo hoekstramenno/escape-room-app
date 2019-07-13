@@ -1,0 +1,144 @@
+:host {
+  --pin-max-width: 400px;
+  --pin-button-height: 50px;
+}
+
+.auth-pin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.pin-code {
+  width: 100%;
+  max-width: var(--pin-max-width);
+  display: flex;
+  flex-direction: column;
+
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+
+  &.invalid {
+    animation: shake .6s ease both;
+  }
+
+  .pin-code-characters {
+
+    ion-col {
+      padding: 10px;
+
+      .pin-code-character {
+        position: relative;
+        padding-bottom: 100%;
+
+        ion-icon {
+          transition: opacity .3s ease, transform .3s ease;
+          transform: scale(1.0001);
+          opacity: 1;
+
+          &.hidden {
+            transform: scale(.5);
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+
+  ion-card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+  }
+
+}
+
+.auth-pin[data-pin-length="3"] {
+
+  .pin-code-characters {
+    margin: 0 4px;
+
+    ion-col {
+      padding: 10px 4px;
+    }
+  }
+}
+
+.pin-result {
+  min-height: 44px;
+}
+
+.pin-inputs {
+  max-width: var(--pin-max-width);
+
+  ion-button {
+    width: 100%;
+    height: var(--pin-button-height);
+    font-size: 20px;
+    --border-radius: 0;
+  }
+
+  ion-icon[name="close"].ios {
+    font-size: 2em;
+  }
+
+  ion-row:first-child {
+    ion-col:first-child ion-button {
+      --border-radius: 10px 0 0 0;
+    }
+
+    ion-col:last-child ion-button {
+      --border-radius: 0 10px 0 0;
+    }
+  }
+
+  ion-row:last-child {
+    ion-col:first-child ion-button {
+      --border-radius: 0 0 0 10px;
+    }
+
+    ion-col:last-child ion-button {
+      --border-radius: 0 0 10px 0;
+    }
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+:host-context(.ios) {
+
+  .pin-code-character ion-icon {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .pin-inputs {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+}

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar *ngIf="task">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Task {{ task.number }}</ion-title>
+      <ion-badge *ngIf="!task.done" slot="end">Todo</ion-badge>
+      <ion-badge *ngIf="task.done" color="success" slot="end">Done</ion-badge>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngIf="task">
+    <ion-card-header>
+      <ion-card-subtitle>Task {{ task.number }}</ion-card-subtitle>
+      <ion-card-title>{{ task.task }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div>
+        <ion-icon name="flame" slot="start"></ion-icon>
+        {{ task.task }}
+      </div>
+      <div *ngIf="task.location">
+        <ion-icon name="pin" slot="start"></ion-icon>
+        {{ task.location}}
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <code-submit [task]="task"></code-submit>
+
+</ion-content>

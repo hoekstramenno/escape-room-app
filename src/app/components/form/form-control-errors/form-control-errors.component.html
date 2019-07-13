@@ -1,0 +1,5 @@
+<ul *ngIf="control.touched && control.dirty && control.errors" class="form-errors">
+    <ng-container *ngFor="let key of keys">
+        <li *ngIf="control.errors[key]">{{ errorMessages[key] }}</li>
+    </ng-container>
+</ul>

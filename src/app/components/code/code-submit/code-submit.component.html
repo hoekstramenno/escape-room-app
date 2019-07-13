@@ -1,0 +1,57 @@
+<ion-card>
+    <ion-item>
+        <ion-label>Insert the code for this task</ion-label>
+    </ion-item>
+
+    <ion-card-content>
+
+        <ion-grid class="pin-code"
+                  [class.invalid]="!!error"
+                  justify-content-center
+        >
+            <form [formGroup]="form" (submit)="submitCode()" action>
+                <ion-item>
+                    <ion-label>Icon</ion-label>
+                    <ion-select formControlName="icon" value="brown" okText="Okay" cancelText="Dismiss">
+                        <ion-select-option value="brown">Brown</ion-select-option>
+                        <ion-select-option value="blonde">Blonde</ion-select-option>
+                        <ion-select-option value="black">Black</ion-select-option>
+                        <ion-select-option value="red">Red</ion-select-option>
+                    </ion-select>
+
+                </ion-item>
+
+                    <form-control-errors [control]="form.controls.icon"
+                                         [errorMessages]="validationMessages.icon"
+                                         margin-bottom
+                    ></form-control-errors>
+
+
+                <ion-item>
+                    <ion-label>Code</ion-label>
+                    <ion-input formControlName="code" type="number" min="{{ length}}" max="{{ length}}"></ion-input>
+                </ion-item>
+
+                    <form-control-errors [control]="form.controls.code"
+                                         [errorMessages]="validationMessages.code"
+                                         margin-bottom
+                    ></form-control-errors>
+
+
+                <ion-button margin-top (click)="submitCode()"
+                        color="primary"
+                        expand="block">Submit code
+                </ion-button>
+            </form>
+
+
+            <ion-row>
+                <ion-col text-center class="pin-result">
+                    <ion-spinner [hidden]="!validating"></ion-spinner>
+                    <ion-text color="primary">{{error}}</ion-text>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </ion-card-content>
+</ion-card>

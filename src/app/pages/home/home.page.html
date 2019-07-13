@@ -1,0 +1,23 @@
+<ion-header [attr.no-border]="isScrolledToTop ? true : null">
+    <ion-toolbar backgroundImage>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Home
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content backgroundImage
+             fullscreen
+             scrollEvents="true"
+             (ionScroll)="onScroll($event)"
+>
+
+    <ion-refresher slot="fixed" (ionRefresh)="loadData($event.target)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+</ion-content>

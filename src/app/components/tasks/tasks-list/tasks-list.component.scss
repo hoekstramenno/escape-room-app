@@ -1,0 +1,11 @@
+ion-avatar {
+  --border-radius: 5px;
+}
+
+.unread {
+
+  ion-label {
+    font-weight: bold;
+    --color: var(--ion-color-secondary-shade);
+  }
+}

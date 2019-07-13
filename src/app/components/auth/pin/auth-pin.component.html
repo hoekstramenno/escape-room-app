@@ -1,0 +1,93 @@
+<div class="auth-pin" [attr.data-pin-length]="length">
+
+    <ion-grid class="pin-code"
+              [class.invalid]="!!error"
+              justify-content-center
+    >
+
+        <ion-row>
+            <ion-col text-center>{{title}}</ion-col>
+        </ion-row>
+
+        <ion-row justify-content-center class="pin-code-characters">
+            <ion-col *ngFor="let p of getPinCodeLengthLoop(), let i = index"
+                     no-padding
+                     align-self-center
+            >
+                <div class="pin-code-character">
+                    <ion-card color="light" no-margin>
+                        <ion-icon [class.hidden]="code.length < i + 1"
+                                  name="medical"
+                                  mode="ios"
+                                  color="dark"
+                                  size="large"
+                        ></ion-icon>
+                    </ion-card>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col text-center class="pin-result">
+                <ion-spinner [hidden]="!validating"></ion-spinner>
+                <ion-text color="primary">{{error}}</ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-toolbar color="tertiary">
+
+        <ion-grid class="pin-inputs">
+            <ion-row justify-content-center>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(1)">1</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(2)">2</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(3)">3</ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-row justify-content-center>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(4)">4</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(5)">5</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(6)">6</ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-row justify-content-center>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(7)">7</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(8)">8</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(9)">9</ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-row justify-content-center>
+                <ion-col>
+                    <ion-button color="light" no-margin (click)="input('CLEAR')">
+                        <ion-icon name="close" color="dark"></ion-icon>
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="dark" no-margin (click)="input(0)">0</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="light" no-margin (click)="input('BACKSPACE')">
+                        <ion-icon name="backspace" color="dark"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </ion-toolbar>
+
+</div>

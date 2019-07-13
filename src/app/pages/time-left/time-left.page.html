@@ -1,0 +1,24 @@
+<ion-content >
+
+  <ion-item>
+    <ion-label>Time left</ion-label>
+    <countdown [config]="{leftTime: timeLeft}">$!h!:$!m!:$!s!</countdown>
+  </ion-item>
+  <div class="row" >
+    <div class="col" text-center >
+  <circle-progress (onClick)="update()"
+          [percent]="percent"
+          [radius]="100"
+          [outerStrokeWidth]="16"
+          [innerStrokeWidth]="8"
+          [outerStrokeColor]="'#78C000'"
+          [innerStrokeColor]="'#C7E596'"
+          [animation]="true"
+          [animationDuration]="300"
+          [lazy]="true"
+  ></circle-progress>
+    </div>
+  </div>
+
+
+</ion-content>

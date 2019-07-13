@@ -1,0 +1,16 @@
+<ion-header no-border>
+    <ion-toolbar backgroundImage>
+        <ion-buttons slot="end">
+            <ion-button routerLink="/auth/logout">Uitloggen</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content backgroundImage
+             forceOverscroll="false"
+             fullscreen
+>
+
+    <auth-pin [length]="5" (submit)="onSubmit($event)"></auth-pin>
+
+</ion-content>
