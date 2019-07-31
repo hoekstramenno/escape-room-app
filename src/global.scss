@@ -9,3 +9,27 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+@import 'theme/typography/fonts';
+@import 'theme/typography/type';
+
+@import 'theme/components/action-sheet';
+
+@import 'theme/components/button';
+@import 'theme/components/card';
+@import 'theme/components/content';
+@import 'theme/components/form';
+@import 'theme/components/header';
+@import 'theme/components/icon';
+@import 'theme/components/item';
+@import 'theme/components/list';
+@import 'theme/components/menu';
+@import 'theme/components/popover';
+@import 'theme/components/refresher';
+@import 'theme/components/slides';
+@import 'theme/components/spinner';
+@import 'theme/components/split-pane';
+@import 'theme/components/tab';
+
+@import 'theme/helpers';
+@import 'theme/background';

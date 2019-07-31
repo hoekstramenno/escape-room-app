@@ -37,13 +37,6 @@ export class TaskPage extends DefaultPage implements OnInit {
     try {
       this.task = await this.tasksService.getTaskById(taskId);
 
-      const unlockedTasks: number[] = (await this.storage.getItem('unlockedTasks')) || [];
-      if (!unlockedTasks.find(id => id === this.task.id)) {
-        this.task.locked = false;
-        unlockedTasks.push(this.task.id);
-        await this.storage.setItem('unlockedTasks', unlockedTasks);
-      }
-
     } catch (e) {
       this.error = e.message;
     }

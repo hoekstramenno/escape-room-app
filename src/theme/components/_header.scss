@@ -1,0 +1,7 @@
+ion-title {
+  font-weight: bold;
+}
+
+.header-ios[no-border] ion-toolbar[backgroundImage]:last-child {
+  --border-width: 0 0 1px 0;
+}

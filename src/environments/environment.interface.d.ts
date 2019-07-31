@@ -23,4 +23,9 @@ export interface EnvironmentVariables {
         hostname: string
         namespace: string | null
     };
+
+    config: {
+        PIN_TIMEOUT_MINUTES: number;
+        PIN_MAX_INVALID_ATTEMPTS: number;
+    }
 }

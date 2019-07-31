@@ -43,18 +43,6 @@ export class AuthEnterPinPage implements OnInit {
                 });
             } else {
                 event.returnError('Pin onjuist!');
-
-                if (!this.userService.loggedIn) {
-                    this.zone.run(() => {
-                        this.router.navigate(['/auth/login'], {
-                            replaceUrl: true,
-                            queryParams: {
-                                message: `Je hebt duizend keer een onjuiste pin ingevuld. Log opnieuw in.`,
-                                return: this.router.url + location.search,
-                            }
-                        });
-                    });
-                }
             }
         });
 

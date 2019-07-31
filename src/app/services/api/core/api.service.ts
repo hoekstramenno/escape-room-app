@@ -69,38 +69,35 @@ export class ApiService {
                 break;
         }
 
-        return new Promise<ApiResponse>((resolve, reject) => {
+        return new Promise<ApiResponse>((resolve) => {
             request.subscribe(
                 (response: ApiResponse) => {
-                    if (response.success) {
-                        resolve(response);
-                    } else {
-                        reject(new Error(response.message));
-                    }
+                    resolve(response);
                 },
                 e => {
-                    if ((e.status === 401 || e.status === 403) && route != 'security/login') {
-                        this.router.navigate(['/auth/logout'], {
-                            replaceUrl: true,
-                            queryParams: {
-                                message: 'Je bent uitgelogd. Log opnieuw in.',
-                                return: this.router.url + location.search,
-                            }
-                        });
-                        if (window.cordova) {
-                            navigator['splashscreen'].hide();
-                        }
-                    } else {
-                        const parsedErrors = ApiService.getParsedErrors(e);
-                        if (parsedErrors) {
-                            reject(new Error(parsedErrors.join('\n') || 'Fout bij verbinden met de server.'));
-                        } else {
-                            if (e.error.error) {
-                                e.error = e.error.error;
-                            }
-                            reject(new Error(e.error.message || 'Fout bij verbinden met de server.'));
-                        }
-                    }
+                    console.log(e.status);
+                    // if ((e.status === 401 || e.status === 403) && route != 'security/login') {
+                    //     this.router.navigate(['/auth/logout'], {
+                    //         replaceUrl: true,
+                    //         queryParams: {
+                    //             message: 'Je bent uitgelogd. Log opnieuw in.',
+                    //             return: this.router.url + location.search,
+                    //         }
+                    //     });
+                    //     if (window.cordova) {
+                    //         navigator['splashscreen'].hide();
+                    //     }
+                    // } else {
+                    //     const parsedErrors = ApiService.getParsedErrors(e);
+                    //     if (parsedErrors) {
+                    //         reject(new Error(parsedErrors.join('\n') || 'Fout bij verbinden met de server.'));
+                    //     } else {
+                    //         if (e.error.error) {
+                    //             e.error = e.error.error;
+                    //         }
+                    //         reject(new Error(e.error.message || 'Fout bij verbinden met de server.'));
+                    //     }
+                    // }
                 }
             );
         });

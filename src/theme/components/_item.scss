@@ -1,0 +1,14 @@
+ion-item {
+  &:last-child, ion-label + & {
+    --inner-border-width: 0;
+  }
+
+  &[no-inner-padding] {
+    --inner-padding-start: 0 !important;
+    --inner-padding-end: 0 !important;
+  }
+}
+
+ion-label + ion-item {
+  margin-top: 5px;
+}

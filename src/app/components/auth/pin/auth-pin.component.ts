@@ -18,7 +18,7 @@ export class AuthPinComponent {
     length = 4;
 
     @Input()
-    title = 'Voer je pin in:';
+    title = 'Enter pin:';
 
     @Output()
     submit: EventEmitter<PinResult> = new EventEmitter();

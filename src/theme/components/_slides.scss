@@ -1,0 +1,27 @@
+ion-slides {
+
+  .swiper-slide {
+    width: auto;
+  }
+
+  // Status slides card spacing fix
+  ion-card[no-margin][margin-right] {
+    margin-right: 10px;
+  }
+
+  ion-avatar {
+    img {
+      width: 100% !important;
+    }
+  }
+}
+
+ion-slides[expand="equal-height"] {
+  .swiper-slide {
+    height: auto;
+
+    ion-card {
+      height: 100%;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 const routes: Routes = [
     {
-        path: 'task/:id',
+        path: ':id',
         loadChildren: './task/task.module#TaskPageModule',
     },
     {

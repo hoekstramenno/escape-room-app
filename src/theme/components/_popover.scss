@@ -1,0 +1,15 @@
+ion-popover {
+
+  ion-item[color="light"] {
+    --ion-color-light: #fff;
+  }
+
+  ion-item:last-child {
+    --inner-border-width: 0;
+  }
+
+}
+
+.sc-ion-popover-ios-h {
+  --width: 250px;
+}

@@ -2,7 +2,8 @@
     <ion-item *ngFor="let task of tasks"
               color="light"
               detail="false"
-              routerLink="{{ task.link }}"
+              routerLink="/tasks/{{ task.id }}"
+              routerDirection="forward"
               [disabled]="task.locked"
     >
         <ion-label>
@@ -10,7 +11,7 @@
                 <h3 *ngIf="!task.locked">{{ task.number }}. {{ task.task }}</h3>
                 <h3 *ngIf="task.locked">{{ task.number }}. Task must be unlocked</h3>
             </ion-text>
-            <ion-text color="secondary">
+            <ion-text>
                 <p *ngIf="!task.locked">{{ task.location }}</p>
             </ion-text>
         </ion-label>

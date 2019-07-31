@@ -12,11 +12,8 @@
             <form [formGroup]="form" (submit)="submitCode()" action>
                 <ion-item>
                     <ion-label>Icon</ion-label>
-                    <ion-select formControlName="icon" value="brown" okText="Okay" cancelText="Dismiss">
-                        <ion-select-option value="brown">Brown</ion-select-option>
-                        <ion-select-option value="blonde">Blonde</ion-select-option>
-                        <ion-select-option value="black">Black</ion-select-option>
-                        <ion-select-option value="red">Red</ion-select-option>
+                    <ion-select formControlName="icon" value="brown" okText="Ok" cancelText="Dismiss">
+                        <ion-select-option *ngFor="let icon of icons" value="{{ icon.label }}">{{ icon.label }}</ion-select-option>
                     </ion-select>
 
                 </ion-item>

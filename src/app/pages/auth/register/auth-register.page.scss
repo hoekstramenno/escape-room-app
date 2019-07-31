@@ -1,0 +1,29 @@
+@import '../../../../theme/variables';
+
+ion-slide {
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding-bottom: 40px;
+}
+
+.pager-bottom ::ng-deep .swiper-pagination.swiper-pagination-bullets {
+
+  $swiper-nav-height: 40px;
+
+  position: fixed !important;
+  bottom: var(--offset-bottom);
+  height: 40px;
+  line-height: 40px;
+  background: $content-background !important;
+  background-position-y: calc(-1 * (100vh - 40px - var(--offset-bottom))) !important;
+  border-top: 1px solid var(--ion-color-dark);
+}
+
+:host-context(.ios) .pager-bottom ::ng-deep .swiper-pagination.swiper-pagination-bullets {
+  display: none;
+}
+
+ion-back-button {
+  display: block;
+}

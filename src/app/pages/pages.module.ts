@@ -7,9 +7,9 @@ import { RouterModule } from '@angular/router';
 
 // import { PipesModule } from '../pipes/pipes.module';
 // import { DirectivesModule } from '../directives/directives.module';
-// import { FormComponentsModule } from '../components/form/form.module';
+import { FormComponentsModule } from '../components/form/form.module';
 // import { UiComponentsModule } from '../components/ui/ui.module';
-// import { ServicesModule } from '../services/services.module';
+import { ServicesModule } from '../services/services.module';
 
 
 @NgModule({
@@ -18,9 +18,9 @@ import { RouterModule } from '@angular/router';
         IonicModule,
         RouterModule,
         // PipesModule,
-        // ServicesModule,
+        ServicesModule,
         // DirectivesModule,
-        // FormComponentsModule,
+        FormComponentsModule,
         // UiComponentsModule,
         // IonicSelectableModule,
     ],

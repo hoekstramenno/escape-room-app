@@ -1,0 +1,62 @@
+ion-card {
+  border-radius: 10px !important;
+
+  ion-label {
+
+    h3 {
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      overflow: hidden;
+      text-overflow: inherit;
+
+      &[text-wrap] {
+        overflow: visible;
+        text-overflow: inherit;
+      }
+
+      &[text-nowrap] {
+        text-overflow: ellipsis;
+      }
+    }
+
+  }
+
+  &[routerLink] {
+
+    > a {
+      display: flex;
+      flex-direction: column;
+      align-items: inherit;
+      justify-content: inherit;
+    }
+  }
+
+  &.profile-slide-card {
+    min-width: 100px;
+  }
+
+}
+
+.clickable-area {
+  display: flex;
+  flex: 1;
+  flex-direction: inherit;
+  align-items: center;
+  align-self: stretch;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  + ion-button,
+  + ion-ripple-effect + ion-button {
+
+    ion-icon {
+      font-size: 24px;
+    }
+
+    &.ios {
+      border-left: 1px solid rgba(0, 0, 0, 0.13);
+    }
+  }
+
+}

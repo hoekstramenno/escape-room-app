@@ -18,9 +18,6 @@ export class FormHelperService {
             Validators.minLength(8),
             Validators.maxLength(128),
         ],
-        veteranNumber: [
-            Validators.pattern(/^[0-9]{9}$/),
-        ],
         postalCode: [
             Validators.pattern(/^[0-9]{4} ?[a-zA-Z]{2}$/),
         ],
@@ -62,6 +59,15 @@ export class FormHelperService {
             required: 'Fill in a code',
             maxlength: 'Code can only be 3 characters ',
             minlength: 'Code can only be 3 characters ',
+        },
+        teamName: {
+            required: 'Choose a team name',
+        },
+        groupNumber: {
+            required: 'Give your group number',
+        },
+        subCamp: {
+            required: 'Give your subcamp',
         },
     };
 

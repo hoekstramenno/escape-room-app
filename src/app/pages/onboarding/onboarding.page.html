@@ -1,0 +1,43 @@
+<ion-content
+        backgroundImage
+        fullscreen
+        forceOverscroll="false"
+        scrollEvents="true"
+>
+    <div class="swiper-container" padding>
+
+            <ion-col align-self-center >
+
+                <img src="/assets/img/logo.png" margin-horizontal="auto" class="slide-img slide-logo">
+                <h1>Escape Room</h1>
+                <p>We challenge you to find in the fastest time possible, 10 tasks around the Jamborette area.
+                </p>
+                <small>Brought to you by: Yellost in Time</small>
+            </ion-col>
+
+    </div>
+</ion-content>
+
+
+<ion-footer no-border>
+
+    <ion-toolbar color="dark" no-padding>
+
+        <ion-grid>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-button expand="block"
+                                color="primary"
+                                no-margin
+                                (click)="continue('/auth/register')"
+                    >
+                        Register
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </ion-toolbar>
+
+</ion-footer>
+

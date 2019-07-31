@@ -9,6 +9,7 @@ export interface IconValidationInterface {
     number: number,
     icon: string,
     code: string,
+    token: string
 }
 
 @Injectable({
@@ -37,33 +38,16 @@ export class CodeService {
         this.initialized = true;
     }
 
+    async getIcons(): Promise<ApiResponse> {
+        return await this.api.post('tasks/icons');
+    }
+
     async validate(validationOptions: IconValidationInterface): Promise<boolean> {
 
         await this.initialize();
 
         try {
-            const validationResponse: ApiResponse = await this.api.get('task/validate', validationOptions, this.userService.user.token);
-
-            // const validationResponse = {
-            //     success: true,
-            //     message: 'Success',
-            //     data: {
-            //         'currentPoints': 10,
-            //         'validate': true,
-            //         'next': 4
-            //     }
-            // };
-
-            // const validationResponse = {
-            //     success: true,
-            //     message: 'Success',
-            //     data: {
-            //         'points': 0,
-            //         'validate': false,
-            //         'next': 3,
-            //     }
-            // };
-
+            const validationResponse: ApiResponse = await this.api.post('tasks/validate', validationOptions);
             const unlockedTasks: number[] = (await this.storage.getItem('unlockedTasks')) || [];
             const currentPoints: number = (await this.storage.getItem('currentPoints')) || 0;
 

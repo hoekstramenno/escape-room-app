@@ -38,42 +38,10 @@ export class TasksService {
 
         if (!this.tasks || options.forceRefresh) {
             try {
-                // const tasksResponse: ApiResponse = await this.api.get('tasks', null, this.userService.user.token);
-
-                const tasksResponse = {
-                    success: true,
-                    message: 'Success',
-                    data: {
-                        'tasks': [{
-                            id: 1,
-                            number: 1,
-                            task: 'Wat is de functie van dit',
-                            location: 'Mokkie',
-                            link: '/tasks/task/1',
-                            locked: false,
-                            done: true,
-                        }, {
-                            id: 2,
-                            number: 2,
-                            task: 'Wat is de functie van dit',
-                            link: '/tasks/task/2',
-                            locked: false,
-                            done: false,
-                        }, {
-                            id: 3,
-                            number: 4,
-                            task: 'Wat is de functie van dit',
-                            link: '/tasks/task/3',
-                            locked: true,
-                            done: false,
-                        }]
-                    }
-                };
-
-
+                const tasksResponse: ApiResponse = await this.api.get('tasks', null, this.userService.user.token);
                 const unlockedTasks: number[] = (await this.storage.getItem('unlockedTasks')) || [];
 
-                this.tasks = tasksResponse.data.tasks.map(task => {
+                this.tasks = tasksResponse.data.map(task => {
                     task = Object.assign(new Task(), task);
                     if (unlockedTasks.find(id => id === task.id)) {
                         task.locked = false;

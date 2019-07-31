@@ -4,11 +4,15 @@ export const environment: EnvironmentVariables = {
   production: false,
   self: {
     schema: 'http',
-    hostname: 'http://localhost:4200'
+    hostname: 'localhost:8100'
   },
   api: {
     schema: 'http',
-    hostname: 'scoreboard.test',
+    hostname: 'jambo-api.test',
     namespace: 'api/v1'
+  },
+  config: {
+    PIN_TIMEOUT_MINUTES: 15,
+    PIN_MAX_INVALID_ATTEMPTS: 3
   }
 };

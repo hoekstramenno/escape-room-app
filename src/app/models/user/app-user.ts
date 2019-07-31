@@ -1,6 +1,8 @@
 export class AppUser {
+    id: number;
     token?: string;
-    groupsnumber: any;
-    teamname: string;
+    groupNumber: any;
+    teamName: string;
+    subCamp: string;
     pin?: string;
 }

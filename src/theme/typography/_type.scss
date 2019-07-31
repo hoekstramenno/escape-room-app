@@ -1,0 +1,38 @@
+h2, .h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 28/22;
+  margin: 0.5rem 0 1rem 0;
+
+  .link {
+    float: right;
+    margin-top: 0.2rem;
+    font-size: 16px;
+  }
+
+
+  &.withLink {
+    display: flex;
+
+    a.link {
+      margin-left: auto;
+    }
+
+  }
+
+  > ion-buttons {
+    --ion-button-margin: -6px;
+    margin-top: var(--ion-button-margin);
+  }
+}
+
+.link {
+  font-weight: normal;
+  color: var(--ion-color-primary);
+  text-decoration: none;
+
+  [color="light"] & {
+    color: var(--ion-color-info);
+  }
+}
+

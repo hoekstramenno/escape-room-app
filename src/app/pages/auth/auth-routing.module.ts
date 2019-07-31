@@ -12,12 +12,8 @@ const routes: Routes = [
         loadChildren: './enter-pin/auth-enter-pin.module#AuthEnterPinPageModule',
     },
     {
-        path: 'login',
-        loadChildren: './login/auth-login.module#AuthLoginPageModule',
-    },
-    {
-        path: 'logout',
-        loadChildren: './login/auth-login.module#AuthLoginPageModule',
+        path: 'register',
+        loadChildren: './register/auth-register.module#AuthRegisterPageModule'
     },
 ];
 

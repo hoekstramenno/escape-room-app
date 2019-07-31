@@ -1,3 +1,4 @@
+
 export class Task {
     id: number;
     number: number;
@@ -5,5 +6,4 @@ export class Task {
     location?: string;
     locked: boolean;
     done: boolean;
-    link: string;
 }

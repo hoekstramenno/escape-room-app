@@ -4,8 +4,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormHelperService } from '../../../services/form/form-helper/form-helper.service';
 import { CodeValidator } from  '../../../validators/code';
 import { CodeService } from '../../../services/api/code/code.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Task } from '../../../models/task/task';
+import { UserService } from '../../../services/api/user/user.service';
+import { Icon } from '../../../models/Icon';
 
 export interface CodeResult {
     code: string;
@@ -23,7 +25,7 @@ export class CodeSubmitComponent implements OnInit{
 
     @Input()
     task: Task;
-
+    icons: Icon[];
     icon = '';
     code = '';
     validating = false;
@@ -37,6 +39,7 @@ export class CodeSubmitComponent implements OnInit{
         protected formHelper: FormHelperService,
         protected codeService: CodeService,
         protected router: Router,
+        protected UserService: UserService,
     ) {
         this.form = this.fb.group({
             'code': ['', CodeValidator.isValid],
@@ -45,7 +48,14 @@ export class CodeSubmitComponent implements OnInit{
     }
 
     ngOnInit() {
+        this.icons = this.getIcons();
         this.initValidationMessages();
+    }
+
+    async getIcons() {
+        return this.codeService.getIcons().then(function(apiResponse) {
+            return apiResponse.data;
+        });
     }
 
     async submitCode() {
@@ -58,7 +68,8 @@ export class CodeSubmitComponent implements OnInit{
                 let response = await this.codeService.validate({
                     'number': this.task.id,
                     'icon': this.form.value.icon,
-                    'code': this.form.value.code
+                    'code': this.form.value.code,
+                    'token': this.UserService.user.token
                 });
 
                 if (response === true) {
@@ -66,7 +77,7 @@ export class CodeSubmitComponent implements OnInit{
                     return;
                 }
 
-                this.error = "NEIN NEIN NEIN";
+                this.error = "No valid code";
             }
         } else {
             this.formHelper.scrollToFirstErrorMessage();

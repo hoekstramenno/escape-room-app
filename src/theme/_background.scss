@@ -1,0 +1,33 @@
+@import 'variables';
+
+body {
+  background: $content-background;
+}
+
+[backgroundImage] {
+
+  --background: none;
+  --color: var(--ion-color-light);
+
+  background: $content-background !important;
+  background-position-y: calc(var(--offset-top) * -1) !important;
+
+  ion-item {
+    --background-activated: rgba(255, 255, 255, .2);
+  }
+
+  ion-button,
+  ion-back-button,
+  ion-menu-button {
+    --color: var(--ion-color-light);
+  }
+
+  ion-header & + & {
+    background-position-y: calc(var(--min-height) * -1) !important;
+  }
+
+  ion-footer & {
+    background-position-y: 75% !important;
+  }
+
+}
